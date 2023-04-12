@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Home from "./components/home/home";
 import About from "./components/home/about/about"
 import Van from "./components/home/van/van";
+import Footer from "./components/footer/footer";
 
 // css files 
 import './App.scss';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/van" element={<Van />} /> 
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,28 @@
+.van-card {
+    width: 300px;
+    display: flex;
+    gap: 9px;
+    flex-direction: column;
+
+    img {
+        width: 100%;
+        border-radius: 5px;
+        grid-area: img;
+    }
+
+    .van-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button {
+        width: 85px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 5px;
+        padding: 5px 12px;
+        border: none;
+        background-color: orange;
+    }
+    
+}

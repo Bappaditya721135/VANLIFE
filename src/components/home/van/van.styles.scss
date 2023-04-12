@@ -1,0 +1,42 @@
+@mixin buttons($fontSize, $color) {
+    padding: 3px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: $fontSize;
+    color: $color;
+}
+
+
+.van-container {
+    padding: 54px 25px;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    ul {
+        display: flex;
+        gap: 20px;
+        li {
+            list-style-type: none;
+            button {
+                @include buttons(1rem, #4d4d4d );
+                background-color: #ffeadf;
+                margin-top: 22px;
+            }
+        }
+    }
+
+    .all-vans {
+        padding-top: 55px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    
+}
