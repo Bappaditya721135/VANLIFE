@@ -1,52 +1,21 @@
+import { useState, useEffect } from "react";
+
+
+// components 
 import VanCard from "./van-card/vanCard";
+
+// style sheet 
 import "./van.styles.scss";
 
 const Van = () => {
 
-    const vans = [
-        {
-            id: 1,
-            name: "Modest Explorer",
-            price: 60,
-            category: "Simple",
-            img: "./img/modest-explorer.png",
-        },
-        {
-            id: 2,
-            name: "Beach Bum",
-            price: 80,
-            category: "Rugged",
-            img: "./img/beach-bum.png",
-        },
-        {
-            id: 3,
-            name: "Reliable Red",
-            price: 100,
-            category: "Luxary",
-            img: "./img/reliable-red.png",
-        },
-        {
-            id: 4,
-            name: "Dreamfinder",
-            price: 65,
-            category: "Simple",
-            img: "./img/dreamfinder.png",
-        },
-        {
-            id: 5,
-            name: "The Cruiser",
-            price: 120,
-            category: "Luxary",
-            img: "./img/the-cruiser.png",
-        },
-        {
-            id: 6,
-            name: "Green Wonder",
-            price: 70,
-            category: "Rugged",
-            img: "./img/green-wonder.png",
-        },
-    ]
+    const [vans, setVans] = useState([]);
+    // fecth call to dummy api server 
+    useEffect(()=>{
+        fetch("/api/users")
+        .then((res) => res.json())
+        .then(({vans}) => setVans(vans));
+    },[])
     return(
         <div className="van-container">
             <h2>Explore our van options</h2>
@@ -65,7 +34,7 @@ const Van = () => {
             {/* this loop is for vanCard componen */}
             <div className="all-vans">
             {vans.map(({id, name, price, category, img}) => {
-                return(<VanCard key={id} name={name} price={price} category={category} img={img} />);
+                return(<VanCard key={id} id={id} name={name} price={price} category={category} img={img} />);
             })}
             </div>
         </div>

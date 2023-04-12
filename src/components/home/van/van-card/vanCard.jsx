@@ -1,14 +1,19 @@
+import { Link } from "react-router-dom";
+
+// styles sheet 
 import "./vanCard.styles.scss";
 
-const VanCard = ({name, price, category, img}) => {
+const VanCard = ({id, name, price, category, img}) => {
     return(
             <div className="van-card">
+                <Link to={`/van/${id}`}>
                 <img src={img} alt="van" />
                 <div className="van-details">
                     <p className="van-name">{name}</p>
                     <p className="van-price">{price}$/day</p>
                 </div>
                 <button className="van-category">{category}</button>
+                </Link>
             </div>
                 );
 }
