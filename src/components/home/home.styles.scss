@@ -21,7 +21,7 @@
     h1 {
         @include absolute-position(65px, white, 70%);
         font-size: 4.5rem;
-    } 
+    }
 
     p {
         @include absolute-position(35%, white, 70% );
@@ -38,6 +38,10 @@
         font-weight: 700;
         border-radius: 5px;
         height: 50px;
+    }
+    button:hover {
+        top: calc(50% + 2px);
+        left: calc(50% + 2px);
     }
 
 
