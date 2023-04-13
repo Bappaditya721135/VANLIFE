@@ -9,10 +9,12 @@ import "./van.styles.scss";
 
 const Van = () => {
 
+    // to store the vans data coming from the fetch request 
     const [vans, setVans] = useState([]);
-    // fecth call to dummy api server 
+    
+    // fecth call to dummy api server to get the vans data
     useEffect(()=>{
-        fetch("/api/users")
+        fetch("/api/van")
         .then((res) => res.json())
         .then(({vans}) => setVans(vans));
     },[])

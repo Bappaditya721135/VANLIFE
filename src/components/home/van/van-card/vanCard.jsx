@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./vanCard.styles.scss";
 
 const VanCard = ({id, name, price, category, img}) => {
+
     return(
             <div className="van-card">
                 <Link to={`/van/${id}`}>
@@ -12,7 +13,7 @@ const VanCard = ({id, name, price, category, img}) => {
                     <p className="van-name">{name}</p>
                     <p className="van-price">{price}$/day</p>
                 </div>
-                <button className="van-category">{category}</button>
+                <span className="van-category">{category}</span>
                 </Link>
             </div>
                 );
