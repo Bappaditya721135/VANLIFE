@@ -1,0 +1,52 @@
+.van-details-page {
+   padding: 26px;
+   display: grid;
+   gap: 40px;
+   grid-template-areas: "button button"
+                        "img disc";
+    .go-back-btn {
+        grid-area: button;
+        max-width: 350px;
+        border: none;
+    }
+    img {
+        grid-area: img;
+        max-width: 600px;
+        width: 100%;
+    }
+    .van-details {
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .van-details-price {
+            font-size: 1.5rem;
+        }
+        .van-details-description {
+            font-size: 1.1rem;
+        }
+
+        button {
+            background-color: #FF8C38;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 10px 0;
+            margin-top: 200px;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+}
