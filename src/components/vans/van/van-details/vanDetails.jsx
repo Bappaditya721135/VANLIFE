@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import "./vanDetails.styles.scss";
 
 const VanDetails = () => {
+    // getting the van id from the url 
     const {id} = useParams();
     const [van, setVan] = useState({});
     useEffect(() => {

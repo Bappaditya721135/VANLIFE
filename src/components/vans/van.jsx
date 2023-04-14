@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 
 // components 
-import VanCard from "./van-card/vanCard";
+import VanCard from "./van/van-card/vanCard";
 
 // style sheet 
 import "./van.styles.scss";
 
-const Van = () => {
+const Vans = () => {
 
     // to store the vans data coming from the fetch request 
     const [vans, setVans] = useState([]);
@@ -43,4 +43,4 @@ const Van = () => {
     );
 }
 
-export default Van;
+export default Vans;
