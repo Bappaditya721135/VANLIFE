@@ -11,6 +11,9 @@ export default function Nav() {
           </h2>
         <ul>
           <li>
+            <Link to="/host">Host</Link>
+          </li>
+          <li>
             <Link to="/about">About</Link>
           </li>
           <li>
