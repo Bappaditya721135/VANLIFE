@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 // style sheet 
 import "./host.styles.scss";
@@ -8,16 +8,24 @@ export default function Host() {
         <div className="host-page">
         <ul className="host-nested-links">
             <li>
-                <Link to="/host">Dashboard</Link>
+                <NavLink to="/host"
+                className={({isActive}) => isActive ? "is-active" : ""}
+                >Dashboard</NavLink>
             </li>
             <li>
-                <Link to="/host/income">Income</Link>
+                <NavLink to="/host/income"
+                className={({isActive}) => isActive ? "is-active" : ""}
+                >Income</NavLink>
             </li>
             <li>
-                <Link to="/host/reviews">Reviews</Link>
+                <NavLink to="/host/reviews"
+                className={({isActive}) => isActive ? "is-active" : ""}
+                >Reviews</NavLink>
             </li>
             <li>
-                <Link to="/host/vans">Vans</Link>
+                <NavLink to="/host/vans"
+                className={({isActive}) => isActive ? "is-active" : ""}
+                >Vans</NavLink>
             </li>
         </ul>
         <Outlet />

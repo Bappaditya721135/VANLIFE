@@ -25,17 +25,17 @@ function App() {
     <div className="main-container">
       <BrowserRouter>
         <Routes>
-          <Route element={<Nav />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/host" element={<Host />}>
-              <Route path="/host" element={<Dashboard />} />
-              <Route path="/host/income" element={<Income />} />
-              <Route path="/host/reviews" element={<Reviews />} />
-              <Route path="/host/vans" element={<HostVans />} />
+          <Route path="/" element={<Nav />}>
+            <Route index element={<Home />} />
+            <Route path="host" element={<Host />}>
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="reviews" element={<Reviews />} />
+              <Route path="vans" element={<HostVans />} />
             </Route>
-            <Route path="/about" element={<About />} />
-            <Route path="/vans" element={<Vans />} /> 
-            <Route path="/van/:id" element={<VanDetails />} /> 
+            <Route path="about" element={<About />} />
+            <Route path="vans" element={<Vans />} /> 
+            <Route path="van/:id" element={<VanDetails />} /> 
           </Route>
         </Routes>
       </BrowserRouter>
