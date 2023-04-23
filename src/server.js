@@ -17,6 +17,7 @@ import greenWonder from "./img/green-wonder.png";
             category: "Simple",
             img: modestExplorer,
             description: "The Modest Explorer is a van designed to get you out of the house and into nature. This beauty     is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!",
+            hostId: 123,
         },
         {
             id: 2,
@@ -24,7 +25,8 @@ import greenWonder from "./img/green-wonder.png";
             price: 80,
             category: "Rugged",
             img: beachBum,
-            description: "Beach Bum is a van inspired by surfers and travelers. It was created to be a portable home away from home, but with some cool features in it you won't find in an ordinary camper."
+            description: "Beach Bum is a van inspired by surfers and travelers. It was created to be a portable home away from home, but with some cool features in it you won't find in an ordinary camper.",
+            hostId: 123,
         },
         {
             id: 3,
@@ -56,7 +58,8 @@ import greenWonder from "./img/green-wonder.png";
             price: 70,
             category: "Rugged",
             img: greenWonder,
-            description: "With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that's perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere."
+            description: "With this van, you can take your travel life to the next level. The Green Wonder is a sustainable vehicle that's perfect for people who are looking for a stylish, eco-friendly mode of transport that can go anywhere.",
+            hostId: 123,
         },]
 
 
@@ -85,6 +88,12 @@ import greenWonder from "./img/green-wonder.png";
             })
             this.get("/api/van/6", () => {
                 return data[5];
+            })
+
+            // host id van request 
+            this.get("/api/vans/123", () => {
+                const filtredVans = data.filter(van => van.hostId === 123);
+                return filtredVans;
             })
         }
     })

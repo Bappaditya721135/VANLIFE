@@ -7,7 +7,7 @@ const VanCard = ({id, name, price, category, img}) => {
 
     return(
             <div className="van-card">
-                <Link to={`/van/${id}`}>
+                <Link to={`/vans/${id}`}>
                 <img src={img} alt="van" />
                 <div className="van-details">
                     <p className="van-name">{name}</p>

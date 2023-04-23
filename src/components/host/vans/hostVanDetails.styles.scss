@@ -1,0 +1,64 @@
+.host-van-details-container {
+    padding: 45px 26px;
+    background-color: #FFF7ED;
+    .van-details {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        padding: 25px;
+        background-color: white;
+
+        img {
+            width: 100%;
+            max-width: 250px;
+        }
+    }
+}
+.host-van-details-name {
+    font-size: 2rem;
+    font-weight: 700;
+
+}
+.host-van-details-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.van-details-navbar {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    gap: 25px;
+    padding-left: 25px;
+
+    a {
+        text-decoration: none;
+        color: #4D4D4D;;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+   
+}
+.outlet-section {
+    padding: 25px;
+    background-color: white;
+}
+
+.van-details-back-btn {
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    width: 160px;
+    margin-bottom: 37px;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.van-details-back-btn:hover {
+    border-bottom: 1px solid blue;
+    .icon {
+        color: blue;
+    }
+}

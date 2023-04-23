@@ -1,0 +1,65 @@
+// font styling 
+@mixin font($size: 1rem, $weight: 400, $color: black) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+
+.host-vans {
+    width: 100%;
+    padding: 20px 0 32px 0;
+    background-color: #FFF7ED;
+
+    h2 {
+        padding: 12px 27px 32px 27px;
+        @include font(2rem, 700, #161616);
+        text-align: center;
+    }
+
+    .listed-vans {
+        // width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-inline: 26px;
+        align-items: center;
+
+        div>a {
+            text-decoration: none;
+            color: #161616;
+            display: flex;
+            gap: 20px;
+            width: 800px;
+            align-items: center;
+            background-color: #FFFFFF;
+            border-radius: 6px;
+            padding: 20px;
+            
+            .hosted-van-img {
+                width: 100%;
+                width: 180px;
+                border-radius: 5px;
+                }   
+            .van-data {
+                display: flex;
+                // gap: 10px;
+                flex-direction: column;
+                position: relative;
+
+                .van-name {
+                    // position: absolute;
+                    // top: 0;
+                    // left: 0;
+                    @include font(1.2rem, 600, #161616)
+                }
+                
+                .van-price {
+                    // position: absolute;
+                    // left: 0;
+                }
+            }          
+        }
+
+    }
+}

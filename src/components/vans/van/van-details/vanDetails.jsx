@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 
 // style sheet 
@@ -16,14 +17,16 @@ const VanDetails = () => {
     }, [])
     return(
         <div className="van-details-page">
-            <button className="go-back-btn">click here to go back</button>
-                <img src={van.img} alt="van" />
+            <Link to=".." relative="path" className="go-back-btn"><AiOutlineArrowLeft className="icon" /> click here to go back</Link>
             <div className="van-details">
+                <img src={van.img} alt="van" />
+                <div className="van-details-van-data">
                 <span className="van-category">{van.category}</span>
                 <h2>{van.name}</h2>
                 <p className="van-details-price"><span>${van.price}</span>/day</p>
                 <p className="van-details-description">{van.description}</p>
                 <button>rent this van</button>
+                </div>
             </div>
         </div>
     );

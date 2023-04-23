@@ -1,53 +1,47 @@
 .van-details-page {
-   padding: 26px;
-   display: grid;
-   gap: 40px;
-   grid-template-areas: "button button"
-                        "img disc";
     .go-back-btn {
-        grid-area: button;
-        max-width: 350px;
-        border: none;
+        display: flex;
+        align-items: center;
+        padding-bottom: 2px;
+        gap: 15px;
+        text-decoration: none;
+        width: 200px;
+        border-bottom: 1px solid black;
+        margin: 40px;
+        color: black;
     }
-    img {
-        grid-area: img;
-        max-width: 600px;
-        width: 100%;
-        border-radius: 10px;
+    .go-back-btn:hover {
+        border-bottom: 1px solid blue;
+
+        .icon {
+            color: blue;
+        }
     }
     .van-details {
-        padding: 60px 20px;
         display: flex;
-        flex-direction: column;
-        gap: 20px;
+        gap: 50px;
+        padding: 20px;
 
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
+        img {
+            width: 500px;
         }
 
-        .van-details-price {
-            font-size: 1.5rem;
-        }
-        .van-details-description {
-            font-size: 1.1rem;
-        }
+        .van-details-van-data {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
 
-        button {
-            background-color: #FF8C38;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            padding: 10px 0;
-            margin-top: 180px;
-            max-width: 400px;
-            width: 100%;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
+            button {
+                width: 500px;
+                height: 40px;
+                border: none;
+                background-color: #FF8C38;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: white;
+            }
         }
     }
-
 }

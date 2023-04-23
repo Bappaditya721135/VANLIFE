@@ -9,6 +9,7 @@ export default function Host() {
         <ul className="host-nested-links">
             <li>
                 <NavLink to="/host"
+                end
                 className={({isActive}) => isActive ? "is-active" : ""}
                 >Dashboard</NavLink>
             </li>
