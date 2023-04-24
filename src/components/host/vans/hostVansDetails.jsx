@@ -14,7 +14,7 @@ export default function HostVanDetails() {
         fetch(`/api/van/${id}`)
         .then(res => res.json())
         .then(data => setVan(data))
-    }, [])
+    }, [id])
 
     const activeNavStyle = {
         color: "black",
@@ -26,7 +26,7 @@ export default function HostVanDetails() {
         <div className="host-van-details-container">
             <Link to=".." relative="path" className="van-details-back-btn"><AiOutlineArrowLeft className="icon" />back to all vans</Link>
             <div className="van-details">
-                <img src={van.img} />
+                <img src={van.img}  alt="van-img"/>
                 <div className="host-van-disc">
                     <span className="van-category">{van.category}</span>
                     <p className="host-van-details-name">{van.name}</p>

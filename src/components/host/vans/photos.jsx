@@ -7,6 +7,6 @@ export default function Photos() {
         width: "100px",
     }
     return(
-        <img src={van.img} style={imgStyle}/>
+        <img src={van.img} style={imgStyle} alt="van-img"/>
     );
 }

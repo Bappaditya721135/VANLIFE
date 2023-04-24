@@ -14,7 +14,7 @@ const VanDetails = () => {
         fetch(`/api/van/${id}`)
         .then(res => res.json())
         .then((data) => setVan(data))
-    }, [])
+    }, [id])
     return(
         <div className="van-details-page">
             <Link to=".." relative="path" className="go-back-btn"><AiOutlineArrowLeft className="icon" /> click here to go back</Link>

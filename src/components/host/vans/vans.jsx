@@ -21,7 +21,7 @@ export default function HostVans() {
                 {vans.length> 0 ? vans.map(van => {
                     return ( <div key={van.id}>
                         <Link to={`${van.id}`}>
-                        <img src={van.img} className="hosted-van-img" />
+                        <img src={van.img} className="hosted-van-img" alt="van-img" />
                         <div className="van-data">
                         <p className="van-name">{van.name}</p>
                         <p className="van-price">${van.price}/day</p>
