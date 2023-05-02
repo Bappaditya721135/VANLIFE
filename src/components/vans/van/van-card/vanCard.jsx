@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 // styles sheet 
 import "./vanCard.styles.scss";
 
-const VanCard = ({id, name, price, category, img, state}) => {
-    
+const VanCard = ({id, name, price, category, img, state, typeFilter}) => {
+  
 
     return(
             <div className="van-card">
@@ -14,7 +14,7 @@ const VanCard = ({id, name, price, category, img, state}) => {
                     <p className="van-name">{name}</p>
                     <p className="van-price">{price}$/day</p>
                 </div>
-                <span className="van-category">{category}</span>
+                <span className={`van-category ${category.toLowerCase()}-selected`}>{category}</span>
                 </Link>
             </div>
                 );

@@ -33,13 +33,13 @@ const Vans = () => {
             <h2>Explore our van options</h2>
             <ul>
                 <li>
-                    <button onClick={() => setSearchParams({type: "simple"})}>Simple</button>
+                    <button onClick={() => setSearchParams({type: "simple"})} className={typeFilter === "simple" ? "simple-selected": ""}>Simple</button>
                 </li>
                 <li>
-                    <button onClick={() => setSearchParams({type: "luxary"})}>Luxary</button>
+                    <button onClick={() => setSearchParams({type: "luxary"})} className={typeFilter === "luxary" ? "luxary-selected": ""}>Luxary</button>
                 </li>
                 <li>
-                    <button onClick={() => setSearchParams({type: "rugged"})}>Rugged</button>
+                    <button onClick={() => setSearchParams({type: "rugged"})} className={typeFilter === "rugged" ? "rugged-selected": ""}>Rugged</button>
                 </li>
                 <li>
                 {typeFilter && 
@@ -50,7 +50,7 @@ const Vans = () => {
             {/* this loop is for vanCard componen */}
             <div className="all-vans">
             {vans.length>0 ? displayVans.map(({id, name, price, category, img}) => {
-                return(<VanCard key={id} id={id} state={{queryString: searchParams.toString()}} name={name} price={price} category={category} img={img} />);
+                return(<VanCard key={id} id={id} typeFilter={typeFilter} state={{queryString: searchParams.toString()}} name={name} price={price} category={category} img={img} />);
             }) : <h1 className="loading-text">Loading...</h1>}
             </div>
         </div>

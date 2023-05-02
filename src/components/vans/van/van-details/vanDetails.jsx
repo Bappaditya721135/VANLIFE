@@ -31,7 +31,7 @@ const VanDetails = () => {
             <div className="van-details">
                 <img src={van.img} alt="van" />
                 <div className="van-details-van-data">
-                <span className="van-category">{van.category}</span>
+                <span className={van.category && `van-category ${van.category.toLowerCase()}-selected`}>{van.category}</span>
                 <h2>{van.name}</h2>
                 <p className="van-details-price"><span>${van.price}</span>/day</p>
                 <p className="van-details-description">{van.description}</p>
