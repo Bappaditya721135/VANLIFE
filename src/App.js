@@ -23,6 +23,7 @@ import Photos from "./components/host/vans/photos"
 // css files 
 import './App.scss';
 import Host from "./components/host/host";
+import ErrorPage from "./components/error/errorPage";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="vans" element={<Vans />} /> 
             <Route path="vans/:id" element={<VanDetails />} /> 
           </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
       <Footer />
