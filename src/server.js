@@ -1,4 +1,4 @@
-import { createServer } from "miragejs";
+import { createServer, Response } from "miragejs";
 
 // all the van images 
 import modestExplorer from  "./img/modest-explorer.png";
@@ -62,13 +62,12 @@ import greenWonder from "./img/green-wonder.png";
             hostId: 123,
         },]
 
-
-
     createServer({
         routes() {
-            this.get("/api/van",() => ({
-                vans : [...data]
-            }))
+            this.get("/api/van",() => {
+                return {vans: [...data]}
+                // return new Response(400, { some: 'header' }, { errors: [ 'name cannot be blank'] });
+            })
 
             // route for each van 
             this.get("/api/van/1", () => {

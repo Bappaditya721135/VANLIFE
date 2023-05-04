@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 
+// getting the function taat gets data from the server 
+import { loadVans } from "../../fetchApi";
+
 
 // components 
 import VanCard from "./van/van-card/vanCard";
@@ -21,13 +24,37 @@ const Vans = () => {
     // filtering the van depending upon types 
     const displayVans = typeFilter ? vans.filter(obj => obj.category.toLowerCase() === typeFilter) : vans;
 
+
+    // loading state is for until the components fetch vans data 
+    const [loadingState, setLoadingState] = useState(false);
+
+
+    const [error, setError] = useState(null)
+
     
     // fecth call to dummy api server to get the vans data
-    useEffect(()=>{
-        fetch("/api/van")
-        .then((res) => res.json())
-        .then(({vans}) => setVans(vans));
-    },[])
+    useEffect( ()=>{
+        setLoadingState(true)
+        const getVans = async () => {
+            try {
+                const {vans}= await loadVans()
+                setVans(vans)
+            }
+            catch(err) {
+                setError(err);
+            }
+            setLoadingState(false)
+        }
+        getVans()
+     },[])
+
+     if(loadingState) {
+        return <h1 className="loading-text">Looding...</h1>
+     }
+
+     else if(error) {
+        return <h1 className="error-text">something went wrong. {`${error.message}`}</h1>
+     }
     return(
         <div className="van-container">
             <h2>Explore our van options</h2>
@@ -49,9 +76,9 @@ const Vans = () => {
 
             {/* this loop is for vanCard componen */}
             <div className="all-vans">
-            {vans.length>0 ? displayVans.map(({id, name, price, category, img}) => {
+            {displayVans.length >0  && displayVans.map(({id, name, price, category, img}) => {
                 return(<VanCard key={id} id={id} typeFilter={typeFilter} state={{queryString: searchParams.toString()}} name={name} price={price} category={category} img={img} />);
-            }) : <h1 className="loading-text">Loading...</h1>}
+            })}
             </div>
         </div>
     );
