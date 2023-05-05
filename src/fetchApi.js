@@ -2,16 +2,13 @@
 
 export async function loadVans() {
     const res = await fetch("/api/van")
-    
-    if(res.status === 200) {
-        const data = res.json();
-        return data;
-    }
-    else {
-        // throw new Error("something went wront")
+    if (!res.ok) {
         throw {
-            message: "failed to fetch",
-            status: res.status,
+            message: "Failed to fetch vans", 
+            statusText: res.statusText,
+            status: res.status
         }
     }
+    const data = await res.json()
+    return data.vans
    }

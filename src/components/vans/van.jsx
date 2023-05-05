@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useLoaderData } from "react-router-dom";
 
 // getting the function taat gets data from the server 
 import { loadVans } from "../../fetchApi";
@@ -11,50 +11,25 @@ import VanCard from "./van/van-card/vanCard";
 // style sheet 
 import "./van.styles.scss";
 
+
+// this function will run before the route changes 
+export const loader = () => {
+    // return loadVans();
+    return loadVans()
+}
+
 const Vans = () => {
+    const [...vans] = useLoaderData()
 
     // getting the query string 
     const [searchParams, setSearchParams] = useSearchParams();
     // queryString
     const typeFilter = searchParams.get("type");
 
-    // to store the vans data coming from the fetch request 
-    const [vans, setVans] = useState([]);
 
     // filtering the van depending upon types 
     const displayVans = typeFilter ? vans.filter(obj => obj.category.toLowerCase() === typeFilter) : vans;
 
-
-    // loading state is for until the components fetch vans data 
-    const [loadingState, setLoadingState] = useState(false);
-
-
-    const [error, setError] = useState(null)
-
-    
-    // fecth call to dummy api server to get the vans data
-    useEffect( ()=>{
-        setLoadingState(true)
-        const getVans = async () => {
-            try {
-                const {vans}= await loadVans()
-                setVans(vans)
-            }
-            catch(err) {
-                setError(err);
-            }
-            setLoadingState(false)
-        }
-        getVans()
-     },[])
-
-     if(loadingState) {
-        return <h1 className="loading-text">Looding...</h1>
-     }
-
-     else if(error) {
-        return <h1 className="error-text">something went wrong. {`${error.message}`}</h1>
-     }
     return(
         <div className="van-container">
             <h2>Explore our van options</h2>
@@ -76,9 +51,9 @@ const Vans = () => {
 
             {/* this loop is for vanCard componen */}
             <div className="all-vans">
-            {displayVans.length >0  && displayVans.map(({id, name, price, category, img}) => {
+             {displayVans.map(({id, name, price, category, img}) => {
                 return(<VanCard key={id} id={id} typeFilter={typeFilter} state={{queryString: searchParams.toString()}} name={name} price={price} category={category} img={img} />);
-            })}
+            })} 
             </div>
         </div>
     );

@@ -1,10 +1,10 @@
-import {BrowserRouter, Routes, Route,} from "react-router-dom";
+import {RouterProvider, createBrowserRouter, createRoutesFromElements, BrowserRouter, Routes, Route,} from "react-router-dom";
 
 
 // components 
 import Home from "./components/home/home";
 import About from "./components/about/about";
-import Vans from "./components/vans/van";
+import Vans, {loader as vansLoader} from "./components/vans/van";
 import Footer from "./components/footer/footer";
 import VanDetails from "./components/vans/van/van-details/vanDetails";
 import Nav from "./components/header/nav";
@@ -22,15 +22,17 @@ import Photos from "./components/host/vans/photos"
 
 // css files 
 import './App.scss';
+
 import Host from "./components/host/host";
+// this error page is for some unknow url 
 import ErrorPage from "./components/error/errorPage";
 
+// this error page when something went wrong in fetching data 
+import Error from "./components/Error";
+
 function App() {
-  return (
-    <div className="main-container">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Nav />}>
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Nav />}>
             {/* home page */}
             <Route index element={<Home />} />
             {/* host page */}
@@ -48,14 +50,16 @@ function App() {
             {/* about page */}
             <Route path="about" element={<About />} />
             {/* vans page */}
-            <Route path="vans" element={<Vans />} /> 
+            <Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<Error />} /> 
             <Route path="vans/:id" element={<VanDetails />} /> 
+            {/* the * represents that this is random url  */}
+            <Route path="*" element={<ErrorPage />} />
           </Route>
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-      <Footer />
-    </div>
+  ))
+  return (
+    <div className="main-container">
+      <RouterProvider router={router} />
+      </div>
   );
 }
 
