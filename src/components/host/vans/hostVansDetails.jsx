@@ -1,5 +1,7 @@
-import {Link, NavLink, useParams, Outlet} from "react-router-dom";
-import {useState, useEffect} from "react"
+import {Link, NavLink, Outlet, useLoaderData} from "react-router-dom";
+
+// getting the fetch function 
+import { getHostVans } from "../../../fetchApi";
 
 // react icon 
 import {AiOutlineArrowLeft} from "react-icons/ai";
@@ -7,14 +9,16 @@ import {AiOutlineArrowLeft} from "react-icons/ai";
 // style sheet 
 import "./hostVanDetails.styles.scss"
 
+
+export const hostVanDetailsLoader = ({params}) => {
+    const {id} = params;
+    return getHostVans(id)
+}
+
 export default function HostVanDetails() {
-    const [van, setVan] = useState({})
-    const {id} = useParams();
-    useEffect(() => {
-        fetch(`/api/van/${id}`)
-        .then(res => res.json())
-        .then(data => setVan(data))
-    }, [id])
+
+    // getiing the van data from loader function 
+    const van = useLoaderData() 
 
     const activeNavStyle = {
         color: "black",

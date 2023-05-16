@@ -1,30 +1,34 @@
-import { useState, useEffect } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useLoaderData } from "react-router-dom";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+
+
+// import the fetch function 
+import { loadVans } from "../../../../fetchApi";
 
 
 
 // style sheet 
 import "./vanDetails.styles.scss";
 
-const VanDetails = () => {
-    // getting the van id from the url 
 
-    // getting the like state data 
+// loader function for this component 
+export const vanDetailsLoader = ({params}) => {
+    const {id} = params;
+    return loadVans(id);
+}
+
+const VanDetails = () => {
+
+    // getting the data from the loader function 
+    const van = useLoaderData()
+    
+
+    // getting the like state data filtered datas
     const location = useLocation();
 
     // checking if url has queryString 
     const hasQueryStr = location.state.queryString ? true : false;
 
-
-
-    const {id} = useParams();
-    const [van, setVan] = useState({});
-    useEffect(() => {
-        fetch(`/api/van/${id}`)
-        .then(res => res.json())
-        .then((data) => setVan(data))
-    }, [id])
     return(
         <div className="van-details-page">
             <Link to={hasQueryStr ? `..?${location.state.queryString}`: ".." } relative="path" className="go-back-btn"><AiOutlineArrowLeft className="icon" /> back to {hasQueryStr ? `${location.state.queryString.split("=")[1]}`: "all" } vans</Link>

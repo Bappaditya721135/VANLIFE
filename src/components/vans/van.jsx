@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useSearchParams, Link, useLoaderData } from "react-router-dom";
+import { useSearchParams, useLoaderData } from "react-router-dom";
 
 // getting the function taat gets data from the server 
 import { loadVans } from "../../fetchApi";
@@ -14,12 +13,11 @@ import "./van.styles.scss";
 
 // this function will run before the route changes 
 export const loader = () => {
-    // return loadVans();
     return loadVans()
 }
 
 const Vans = () => {
-    const [...vans] = useLoaderData()
+    const {vans} = useLoaderData()
 
     // getting the query string 
     const [searchParams, setSearchParams] = useSearchParams();

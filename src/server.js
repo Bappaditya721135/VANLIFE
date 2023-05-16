@@ -1,4 +1,4 @@
-import { createServer, Response } from "miragejs";
+import { createServer } from "miragejs";
 
 // all the van images 
 import modestExplorer from  "./img/modest-explorer.png";

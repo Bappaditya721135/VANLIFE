@@ -1,18 +1,21 @@
-import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLoaderData} from "react-router-dom";
+
+
+// getting the fetch function for the host 
+import {getHostVans} from "../../../fetchApi"
+
 // style sheet 
 import "./vans.styles.scss";
 
-export default function HostVans() {
-    const [vans, setVans] = useState([])
-    // getting the data for host id 123
-    useEffect(() => {
-        fetch("/api/vans/123")
-        .then(res => res.json())
-        .then(data => setVans(data))
-        .catch(err => console.error(err))
-    }, [])
+// loader function for this component 
+export const hostVansLoader = () => {
+    return getHostVans();
+}
 
+export default function HostVans() {
+
+    // getting the data from the loader function 
+    const vans = useLoaderData()
 
     return(
         <div className="host-vans">

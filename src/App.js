@@ -1,20 +1,19 @@
-import {RouterProvider, createBrowserRouter, createRoutesFromElements, BrowserRouter, Routes, Route,} from "react-router-dom";
+import {RouterProvider, createBrowserRouter, createRoutesFromElements, Route,} from "react-router-dom";
 
 
 // components 
 import Home from "./components/home/home";
 import About from "./components/about/about";
 import Vans, {loader as vansLoader} from "./components/vans/van";
-import Footer from "./components/footer/footer";
-import VanDetails from "./components/vans/van/van-details/vanDetails";
+import VanDetails, {vanDetailsLoader} from "./components/vans/van/van-details/vanDetails";
 import Nav from "./components/header/nav";
 
 // host child component 
 import Dashboard from "./components/host/dashboard/dashboard";
 import Income from "./components/host/income/income";
 import Reviews from "./components/host/reviews/reviews";
-import HostVans from "./components/host/vans/vans";
-import HostVanDetails from "./components/host/vans/hostVansDetails";
+import HostVans, {hostVansLoader} from "./components/host/vans/vans";
+import HostVanDetails, {hostVanDetailsLoader} from "./components/host/vans/hostVansDetails";
 // child details component 
 import Details from "./components/host/vans/details"
 import Pricing from "./components/host/vans/pricing"
@@ -40,8 +39,8 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
               <Route path="reviews" element={<Reviews />} />
-              <Route path="vans" element={<HostVans />} />
-              <Route path="vans/:id" element={<HostVanDetails />} >
+              <Route path="vans" element={<HostVans />} loader={hostVansLoader} errorElement={<Error />} />
+              <Route path="vans/:id" element={<HostVanDetails />} loader={hostVanDetailsLoader} errorElement={<Error />} >
                 <Route index element={<Details />} />
                 <Route path="pricing" element={<Pricing />} />
                 <Route path="photos" element={<Photos />} />
@@ -51,7 +50,7 @@ function App() {
             <Route path="about" element={<About />} />
             {/* vans page */}
             <Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<Error />} /> 
-            <Route path="vans/:id" element={<VanDetails />} /> 
+            <Route path="vans/:id" element={<VanDetails />} loader={vanDetailsLoader} errorElement={<Error />} /> 
             {/* the * represents that this is random url  */}
             <Route path="*" element={<ErrorPage />} />
           </Route>
